@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Show Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="6" offsetMd="3">
+        <ion-card>
+          <ion-card-header>
+            Enter  your search
+          </ion-card-header>
+          <ion-card-content padding>
+            <ion-item>
+              <ion-input type="text"
+                         required
+                         placeholder="e.x. You're the Worst"
+                         color="primary"
+                         clearInput
+                         [(ngModel)]="query"
+              ></ion-input>
+            </ion-item>
+            <ion-button color="secondary" padding (click)="onSearch()"
+            >Search <ion-icon name="bowtie" slot="end"></ion-icon></ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
