@@ -12,9 +12,16 @@
  </ion-header>
  <ion-content>
     <ion-list>
-        <ion-item *ngFor="let show of shows">
+      <ion-item-group *ngFor="let show of shows">
+        <ion-item >
        <ion-label>{{show.name}}</ion-label>
-     </ion-item>
+             <ion-thumbnail slot="start">
+          <ion-img *ngIf="show.image" [src]="show.image"></ion-img>
+        </ion-thumbnail>
+        </ion-item>
+        <ion-item>Status:{{show.status}}
+        </ion-item>
+      </ion-item-group>
     </ion-list>
 
   </ion-content>
