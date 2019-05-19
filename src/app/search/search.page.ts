@@ -13,10 +13,15 @@ query; string;
   constructor(public modalController: ModalController) { }
 
   async onSearch() {
-    const modal = await this.modalController.create({
-      component: ResultsComponent
-    });
-    return await modal.present();
+    if (this.query) {
+      const modal = await this.modalController.create({
+        component: ResultsComponent,
+        componentProps: {
+          term: this.query
+        }
+      });
+      return await modal.present();
+    }
   }
 
 
