@@ -4,6 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
   { path: 'search', loadChildren: './search/search.module#SearchPageModule' },
+  { path: 'details/:sid', loadChildren: './show-details/show-details.module#ShowDetailsPageModule' },
 ];
 
 @NgModule({

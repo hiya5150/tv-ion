@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+              defaultHref="/search"
+              text="back"
+      >
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{show.name}}</ion-card-title>
+      <ion-card-subtitle>
+        <span *ngIf="show.status">Status: <strong>{{show.status}}</strong></span>
+        <span *ngIf="show.status && show.premiered">   |   </span>
+        <span *ngIf="show.premiered"> Aired: <strong>{{show.premiered | date}}</strong></span>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-text [innerHTML]="show.summary"></ion-text>
+
+      <ion-list *ngFor="let season of show.episodes">
+
+        <ion-list-header>
+          <ion-label>Season {{season[0].season}}</ion-label>
+        </ion-list-header>
+
+        <ion-item *ngFor="let episode of season">
+          <ion-label>
+            S{{episode.season | episodeNumberPrettier}}E{{episode.episode | episodeNumberPrettier}} - {{episode.name}}
+            <!--            S{{episode.season}}E{{episode.episode}} - {{episode.name}}-->
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

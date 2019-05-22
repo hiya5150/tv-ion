@@ -21,9 +21,12 @@ export class TvmazeService {
     );
   }
 
-  fetchShow(showID: string): Observable<any> {
+  fetchShow(showID: string): Observable<Show> {
     const url = this.base + '/shows/' + showID;
-    return this.http.get(url);
+    return this.http.get(url)
+        .pipe(
+            map(res => new Show(res))
+        );
   }
 
   fetchEpisodes(showID: number): Observable<Episode[]> {

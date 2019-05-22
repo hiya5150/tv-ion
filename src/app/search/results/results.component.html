@@ -12,16 +12,26 @@
  </ion-header>
  <ion-content>
     <ion-list>
-      <ion-item-group *ngFor="let show of shows">
-        <ion-item >
-       <ion-label>{{show.name}}</ion-label>
-             <ion-thumbnail slot="start">
-          <ion-img *ngIf="show.image" [src]="show.image"></ion-img>
-        </ion-thumbnail>
+        <ion-item *ngFor="let show of shows"
+                  routerLink="/details/{{show.id}}"
+                    (click)="onClose()">
+            <ion-avatar slot="start">
+                <img src="{{show.image}}" alt="N/A">
+            </ion-avatar>
+            <ion-label>
+                <ion-text color="primary">
+                    <h2>{{show.name}}</h2>
+                </ion-text>
+                <ion-text color="secondary">
+                    <p>
+                        <span *ngIf="show.status">Status: <strong>{{show.status}}</strong></span>
+                        <span *ngIf="show.status && show.premiered"> | </span>
+                        <span *ngIf="show.premiered"> Aired: <strong>{{show.premiered | date}}</strong></span>
+                    </p>
+                </ion-text>
+                <p [innerHTML]="show.summary" ></p>
+            </ion-label>
         </ion-item>
-        <ion-item>Status:{{show.status}}
-        </ion-item>
-      </ion-item-group>
     </ion-list>
 
   </ion-content>
